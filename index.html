@@ -94,10 +94,36 @@
 </head>
 
 <body>
+<div style="text-align:center; margin:20px;">
+    <input
+        type="text"
+        id="buscador"
+        placeholder="Buscar cargo o persona"
+        style="padding:8px; width:300px; font-size:16px;"
+    >
+</div>
 
 <div id="tree"></div>
 
 <!-- CREACIÓN DEL ORGANIGRAMA -->
+<script>
+document.getElementById("buscador").addEventListener("input", function () {
+    var texto = this.value.toLowerCase();
+
+    chart.nodes.forEach(node => {
+        const contenido = (
+            (node.Cargo || "") +
+            (node.Puesto || "") +
+            (node.Persona || "")
+        ).toLowerCase();
+
+        if (contenido.includes(texto)) {
+            chart.expand(node.id);
+            chart.focus(node.id);
+        }
+    });
+});
+</script>
 
 <script>
 var chart = new OrgChart(document.getElementById("tree"), {
@@ -1302,6 +1328,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 </body>
 </html>
+
 
 
 
