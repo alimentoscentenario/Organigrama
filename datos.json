@@ -1,0 +1,4 @@
+[
+  { "id": 1, "nombre": "Dirección General", "cargo": "Director/a" },
+  { "id": 2, "pid": 1, "nombre": "Recursos Humanos", "cargo": "Jefatura" }
+]
