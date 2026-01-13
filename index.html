@@ -102,6 +102,9 @@
 <script>
 var chart = new OrgChart(document.getElementById("tree"), {
   template: "ana",
+  searchPlaceholder: "Buscar cargo, puesto o persona",
+searchFields: ["Cargo", "Puesto", "Persona que ocupa el puesto"],
+
   nodeHeight: 150,
 
 
@@ -1309,5 +1312,6 @@ const interval = setInterval(() => {
 
 </body>
 </html>
+
 
 
