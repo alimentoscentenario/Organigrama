@@ -94,12 +94,12 @@
   </style>
 </head>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+setTimeout(() => {
     const searchInput = document.querySelector('input[type="search"], input[type="text"]');
     if (searchInput) {
         searchInput.placeholder = "Buscar en el organigrama";
     }
-});
+}, 1000);
 </script>
 
 <body>
@@ -1286,5 +1286,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 </body>
 </html>
+
 
 
