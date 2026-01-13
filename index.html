@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <title>Organigrama</title>
 
-  <!-- Librería OrgChart -->
-  <script src="https://balkan.app/js/OrgChart.js"></script>
+  <!-- Librería Org -->
+  <script src="https://balkan.app/js/Org.js"></script>
 
   <!-- PERSONALIZACIÓN DEL PANEL DE DETALLE -->
+  <script>
+const NODOS = [
+  /* TODO tu listado de nodos TAL CUAL está */
+];
+</script>
   <script>
   OrgChart.templates.ana.details = function(data) {
 
@@ -110,7 +115,7 @@
 document.getElementById("buscador").addEventListener("input", function () {
     const texto = this.value.toLowerCase().trim();
 
-    chart.config.nodes.forEach(node => {
+    .config.nodes.forEach(node => {
         const contenido = (
             (node.Cargo || "") +
             (node.Puesto || "") +
@@ -118,7 +123,7 @@ document.getElementById("buscador").addEventListener("input", function () {
         ).toLowerCase();
 
         if (contenido.includes(texto) && texto !== "") {
-            chart.expand(node.id);
+            .expand(node.id);
         }
     });
 });
@@ -126,15 +131,15 @@ document.getElementById("buscador").addEventListener("input", function () {
 
 
 <script>
-var chart = new OrgChart(document.getElementById("tree"), {
+var  = new Org(document.getElementById("tree"), {
   template: "ana",
   enableSearch: false,
   nodeHeight: 150,
 
 
-  layout: OrgChart.tree,
-  orientation: OrgChart.orientation.top,
-  scaleInitial: OrgChart.match.boundary,
+  layout: Org.tree,
+  orientation: Org.orientation.top,
+  scaleInitial: Org.match.boundary,
 
   nodeMenu: {
     details: { text: "Ver detalle" },
@@ -1328,36 +1333,33 @@ var chart = new OrgChart(document.getElementById("tree"), {
 document.getElementById("buscador").addEventListener("input", function () {
     const texto = this.value.toLowerCase().trim();
 
-    // colapsa todo primero
-    chart.collapseAll();
+    if (texto === "") {
+        chart.load(NODOS);
+        return;
+    }
 
-    if (texto === "") return;
-
-    chart.config.nodes.forEach(node => {
+    const filtrados = NODOS.map(n => {
         const contenido = (
-            (node.Cargo || "") +
-            (node.Puesto || "") +
-            (node["Persona que ocupa el puesto"] || "")
+            (n.Cargo || "") +
+            (n.Puesto || "") +
+            (n["Persona que ocupa el puesto"] || "")
         ).toLowerCase();
 
         if (contenido.includes(texto)) {
-            // expandir toda la jerarquía
-            let actual = node;
-            while (actual) {
-                chart.expand(actual.id);
-                actual = chart.get(actual.pid);
-            }
-
-            // centrar el nodo
-            chart.focus(node.id);
+            return { ...n, expanded: true };
         }
+        return n;
     });
+
+    chart.load(filtrados);
 });
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
