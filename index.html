@@ -94,17 +94,40 @@
 </head>
 
 <body>
-
+<div style="text-align:center; margin:20px;">
+    <input
+        type="text"
+        id="buscador"
+        placeholder="Buscar cargo o persona"
+        style="padding:8px; width:300px; font-size:16px;"
+    >
+</div>
 <div id="tree"></div>
 
 <!-- CREACIÓN DEL ORGANIGRAMA -->
+<script>
+document.getElementById("buscador").addEventListener("input", function () {
+    var texto = this.value.toLowerCase();
+
+    chart.nodes.forEach(node => {
+        const contenido = (
+            (node.Cargo || "") +
+            (node.Puesto || "") +
+            (node.Persona || "")
+        ).toLowerCase();
+
+        if (contenido.includes(texto)) {
+            chart.expand(node.id);
+            chart.focus(node.id);
+        }
+    });
+});
+</script>
 
 <script>
 var chart = new OrgChart(document.getElementById("tree"), {
   template: "ana",
-  searchPlaceholder: "Buscar cargo, puesto o persona",
-searchFields: ["Cargo", "Puesto", "Persona que ocupa el puesto"],
-
+  enableSearch: false,
   nodeHeight: 150,
 
 
@@ -1300,18 +1323,11 @@ searchFields: ["Cargo", "Puesto", "Persona que ocupa el puesto"],
       ]
     });
   </script>
-<script>
-const interval = setInterval(() => {
-    const input = document.querySelector('input');
-    if (input && input.placeholder) {
-        input.placeholder = "Buscar en el organigrama";
-        clearInterval(interval);
-    }
-}, 300);
-</script>
+
 
 </body>
 </html>
+
 
 
 
