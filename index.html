@@ -1297,7 +1297,17 @@ var chart = new OrgChart(document.getElementById("tree"), {
       ]
     });
   </script>
+<script>
+const interval = setInterval(() => {
+    const input = document.querySelector('input');
+    if (input && input.placeholder) {
+        input.placeholder = "Buscar en el organigrama";
+        clearInterval(interval);
+    }
+}, 300);
+</script>
 
 </body>
 </html>
+
 
