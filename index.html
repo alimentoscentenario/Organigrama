@@ -94,6 +94,12 @@
 </head>
 
 <body>
+<input
+  id="buscador"
+  type="text"
+  placeholder="Buscar persona o cargo"
+  style="width:300px;padding:8px;margin:10px"
+/>
 
 <div id="tree"></div>
 
@@ -104,6 +110,31 @@ var chart = new OrgChart(document.getElementById("tree"), {
   template: "ana",
   enableSearch: false,
   nodeHeight: 150,
+<script>
+document.getElementById("buscador").addEventListener("input", function () {
+  const texto = this.value.toLowerCase().trim();
+  if (!texto) return;
+
+  chart.collapseAll();
+
+  chart.config.nodes.forEach(node => {
+    const contenido = (
+      (node.Cargo || "") +
+      (node.Puesto || "") +
+      (node["Persona que ocupa el puesto"] || "")
+    ).toLowerCase();
+
+    if (contenido.includes(texto)) {
+      let actual = node;
+      while (actual) {
+        chart.expand(actual.id);
+        actual = chart.get(actual.pid);
+      }
+      chart.focus(node.id);
+    }
+  });
+});
+</script>
 
 
   layout: OrgChart.tree,
@@ -1301,4 +1332,5 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 </body>
 </html>
+
 
