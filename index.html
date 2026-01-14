@@ -124,8 +124,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
       show: function(node) {
         return !!node.listado_pdf;
       }
-    }
-  },
+    },
+  edit: false,     // ⬅️ elimina lápiz
+  share: false     // ⬅️ elimina compartir
+},
 
 
   collapse: { level: 3 },
@@ -1305,6 +1307,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 </body>
 </html>
+
 
 
 
