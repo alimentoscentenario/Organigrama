@@ -1334,7 +1334,7 @@ document.getElementById("buscador").addEventListener("keyup", function () {
 
     chart.collapseAll();
 
-    if (texto === "") return;
+    if (!texto) return;
 
     chart.config.nodes.forEach(node => {
         const datos = (
@@ -1351,10 +1351,9 @@ document.getElementById("buscador").addEventListener("keyup", function () {
 </script>
 
 
-
-
 </body>
 </html>
+
 
 
 
