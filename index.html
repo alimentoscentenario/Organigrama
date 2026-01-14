@@ -1299,7 +1299,35 @@ var chart = new OrgChart(document.getElementById("tree"), {
     });
   </script>
 
+  <script>
+(function () {
+  const removeIcons = () => {
+    document.querySelectorAll('svg, button').forEach(el => {
+      const txt = (el.innerText || '').toLowerCase();
+      const title = (el.getAttribute('title') || '').toLowerCase();
+
+      if (
+        txt.includes('edit') ||
+        txt.includes('share') ||
+        title.includes('edit') ||
+        title.includes('share')
+      ) {
+        el.style.display = 'none';
+      }
+    });
+  };
+
+  // Ejecuta al cargar
+  setTimeout(removeIcons, 500);
+
+  // Observa cambios (OrgChart vuelve a crear los íconos)
+  const observer = new MutationObserver(removeIcons);
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
 </body>
 </html>
+
 
 
