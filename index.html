@@ -64,7 +64,6 @@
 
     }
 
-
     #tree {
       position: relative;
       background-color: #003d7c;
@@ -139,7 +138,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
     field_2: "Persona que ocupa el puesto"
   },
 
-
+.boc-toolbar [data-action="edit"],
+.boc-toolbar [data-action="share"] {
+  display: none !important;
+}
       nodes: [
  
         {
@@ -1310,6 +1312,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
   
 </body>
 </html>
+
 
 
 
