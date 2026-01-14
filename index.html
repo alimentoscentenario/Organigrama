@@ -63,10 +63,7 @@
       font-family: Arial, sans-serif;
 
     }
-.boc-toolbar [data-action="edit"],
-.boc-toolbar [data-action="share"] {
-  display: none !important;
-}
+
 
     #tree {
       position: relative;
@@ -96,10 +93,14 @@
     }
 
   </style>
+  .boc-toolbar [data-action="edit"],
+.boc-toolbar [data-action="share"] {
+  display: none !important;
+}
 </head>
   
 <body>
-
+  
 <div id="tree"></div>
 
 <!-- CREACIÓN DEL ORGANIGRAMA -->
@@ -1312,6 +1313,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
   
 </body>
 </html>
+
 
 
 
