@@ -1303,23 +1303,13 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
       ]
     });
-  <script>
-chart.on('details', function () {
-  setTimeout(function () {
-    // elimina botón editar
-    document.querySelectorAll('.boc-edit, .boc-edit-form, .boc-edit-form-button')
-      .forEach(el => el.remove());
-
-    // elimina botón compartir
-    document.querySelectorAll('.boc-share')
-      .forEach(el => el.remove());
-  }, 0);
-});
+  
 </script>
 
   
 </body>
 </html>
+
 
 
 
