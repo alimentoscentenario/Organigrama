@@ -91,11 +91,7 @@
     .node text {
       fill: #003d7c !important;
     }
-    .boc-edit-form,
-.boc-edit,
-.boc-share {
-  display: none !important;
-}
+    
   </style>
 </head>
 
@@ -112,9 +108,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
   enableDragDrop: false,
   enableDetailsView: true,
   nodeHeight: 150,
-editForm: {
-  readOnly: true
-},
+
 
   layout: OrgChart.tree,
   orientation: OrgChart.orientation.top,
@@ -1311,6 +1305,7 @@ editForm: {
 
 </body>
 </html>
+
 
 
 
