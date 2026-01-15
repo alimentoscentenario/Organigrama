@@ -102,7 +102,13 @@
 
 <script>
 var chart = new OrgChart(document.getElementById("tree"), {
-  editForm: {
+  
+});
+  template: "ana",
+  enableSearch: false,
+  nodeHeight: 150,
+  
+editForm: {
         readOnly: true,
         buttons: {
             edit: null,
@@ -110,12 +116,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
             pdf: true
         }
     }
-});
-  template: "ana",
-  enableSearch: false,
-  nodeHeight: 150,
-  
-
   layout: OrgChart.tree,
   orientation: OrgChart.orientation.top,
   scaleInitial: OrgChart.match.boundary,
@@ -1312,6 +1312,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
   </body>
 </html>
+
 
 
 
