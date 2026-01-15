@@ -108,13 +108,18 @@ var chart = new OrgChart(document.getElementById("tree"), {
   enableSearch: false,
   nodeHeight: 150,
   
-editForm: {
-        readOnly: true,
-        buttons: {
-            edit: null,
-            share: null,
-            pdf: true
-        }
+chart.on('render', function () {
+
+    // eliminar botón editar
+    var editBtn = document.querySelector('.boc-edit-form-edit');
+    if (editBtn) editBtn.remove();
+
+    // eliminar botón compartir
+    var shareBtn = document.querySelector('.boc-edit-form-share');
+    if (shareBtn) shareBtn.remove();
+
+});
+
     }
   layout: OrgChart.tree,
   orientation: OrgChart.orientation.top,
@@ -1312,6 +1317,7 @@ editForm: {
 
   </body>
 </html>
+
 
 
 
